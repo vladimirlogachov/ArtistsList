@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ArtistsList</string>
+    <string name="action_settings">Settings</string>
+    <string name="pupular_artists">Popular artists</string>
+    <string name="listeners_pattern">(%d listeners)</string>
+    <string name="title_activity_artist">ArtistActivity</string>
+    <string name="play_count_pattern">(%d times played)</string>
+    <string name="title_activity_album">AlbumActivity</string>
+    <string name="country">Country</string>
+    <array name="countries">
+        <item>Ukraine</item>
+        <item>Spain</item>
+        <item>Norway</item>
+    </array>
+</resources>

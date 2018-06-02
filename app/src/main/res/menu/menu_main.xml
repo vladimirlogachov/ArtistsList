@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.takeiteasy.vip.artistslist.popular.PopularArtistsActivity">
+    <item
+        android:id="@+id/spinner"
+        android:title="@string/country"
+        app:actionViewClass="android.widget.Spinner"
+        app:showAsAction="always" />
+</menu>
