@@ -7,6 +7,7 @@ import com.takeiteasy.vip.artistslist.api.responses.TopArtistsResponse
 import com.takeiteasy.vip.artistslist.models.Album
 import com.takeiteasy.vip.artistslist.models.AlbumInfo
 import com.takeiteasy.vip.artistslist.models.Artist
+import com.takeiteasy.vip.artistslist.models.Tracks
 import io.reactivex.Single
 import java.io.IOException
 
@@ -89,13 +90,14 @@ class DataRepository(
     }
 
     private fun readAlbumInfo(artist: String, album: String): AlbumInfo? {
-        return albumsInfoStorage.find { it.artist == artist && it.name == album }
+        val albumInfo = albumsInfoStorage.find { it.artist == artist && it.name == album }
+
+        return albumInfo ?: AlbumInfo("", "",  "", "", listOf(), 0, 0, Tracks(listOf()))
     }
 
     fun loadArtistAlbumInfo(artist: String, album: String): Single<AlbumInfo> {
-        val albumInfo = readAlbumInfo(artist, album)
-        return if (!isOnline() || albumInfo != null) {
-            Single.just(albumInfo)
+        return if (!isOnline()) {
+            Single.just(readAlbumInfo(artist, album))
         } else {
             api.getArtistAlbumInfo(artist, album)
                     .flatMap { t: ArtistAlbumInfoResponse ->
